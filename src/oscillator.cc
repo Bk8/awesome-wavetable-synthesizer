@@ -36,7 +36,7 @@ float Oscillator::getSample()
   
   tmp = _phaseAccumulator * wavetable.length;
   
-  int intPart = tmp;
+  uint32_t intPart = tmp;
   double fraqPart = tmp - intPart;
 
   float s0 = wavetable.samples[intPart];

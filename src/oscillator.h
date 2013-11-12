@@ -2,10 +2,11 @@
 #define OSCILLATOR_H
 
 #include <vector>
+#include <cstdint>
 
 struct Wavetable
 {
-  int length;
+  uint32_t length;
   double topFrequency;
   float* samples;
 };
