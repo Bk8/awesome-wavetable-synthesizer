@@ -1,8 +1,7 @@
 #ifndef OSCILLATOR_H
 #define OSCILLATOR_H
 
-#include <vector>
-#include <cstdint>
+#include <stdint.h>
 
 struct Wavetable
 {
@@ -25,7 +24,8 @@ class Oscillator
   private:
     double _phaseAccumulator;
     double _phaseIncrement;
-    std::vector<Wavetable> _waveTables;
+    uint16_t _numWavetables;
+    Wavetable _waveTables[128];
 };
 
 #endif /* OSCILLATOR_H */

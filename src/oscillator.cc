@@ -1,9 +1,10 @@
 #include "oscillator.h"
-#include <iostream>
+#include <string.h>
 
 Oscillator::Oscillator() : 
   _phaseAccumulator(0.0),
-  _phaseIncrement(0.0)
+  _phaseIncrement(0.0),
+  _numWavetables(0)
 {
 }
 
@@ -13,7 +14,9 @@ Oscillator::~Oscillator()
 
 void Oscillator::addWavetable(const Wavetable& wavetable)
 {
-  _waveTables.push_back(wavetable);
+  memcpy(&_waveTables+_numWavetables, &wavetable, sizeof (Wavetable));
+  memcpy(_waveTables[_numWavetables].samples, &wavetable.samples, wavetable.length);
+  _numWavetables++;
 }
 
 void Oscillator::setFrequency(double frequency)
